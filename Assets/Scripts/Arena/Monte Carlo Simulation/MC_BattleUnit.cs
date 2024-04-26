@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class MC_BattleUnit : BattleUnit
 {
-    //[SerializeField] public Unit myUnit;
-    //[HideInInspector] public BattleUnit myEnemy;
-
-    //[HideInInspector] public bool isAlive;
-
     private MC_BattleManager manager;
     private bool isP1 = false;
     private bool isFirstTurn = true;
@@ -63,6 +58,8 @@ public class MC_BattleUnit : BattleUnit
     {
         s.Use(this, myEnemy);
 
+        //Debug.Log($"{myUnit.unitName} use {s.skillName}");
+
         EndTurn();
     }
 
@@ -71,14 +68,21 @@ public class MC_BattleUnit : BattleUnit
         if (manager.isEnd)
             return;
 
-        manager.EndTurn();
+        //Debug.Log($"{myUnit.unitName} health {myUnit.healthPoint}, {myEnemy.myUnit.unitName} health {myEnemy.myUnit.healthPoint}");
+
+        if (!isAlive || !myEnemy.isAlive)
+        {
+            manager.EndBattle();
+        }
+        else
+            manager.EndTurn();
     }
 
     public override void Dead()
     {
+        //Debug.Log($"{myUnit.unitName} is dead!");
+
         isAlive = false;
-        
-        manager.EndBattle(isP1);
     }
 
 }

@@ -151,15 +151,15 @@ public class BattleUnit : MonoBehaviour
         //tmpUnit2.Init(myEnemy.myUnit);
 
         // Result check
-        int[] tmpResult = new int[myUnit.skillSet.Count];
+        Node bestResult = null;
 
         LocalManager_ArenaUI.instance.StepAI($"#{LocalManager_Arena.instance.CurrentTurn}");
-        LocalManager_ArenaUI.instance.StepAI($"{myUnit.unitName} turn, using Monte Carlo simulation");
+        LocalManager_ArenaUI.instance.StepAI($"{myUnit.unitName} turn, using Monte Carlo simulation\n");
 
         for (int i = 0; i < myUnit.skillSet.Count; i++)
         {
-            tmpResult[i] = 0;
-            int tmpWin = 0;
+            Node tmpResult = null;
+            Node tmpBestResult = null;
 
             if (myUnit.skillSet[i].CheckCD())
             {
@@ -170,39 +170,39 @@ public class BattleUnit : MonoBehaviour
                     tmpUnit2.Reset(myEnemy.myUnit);
 
                     // Simulation
-                    var tmpIndex = LocalManager_Arena.instance.mc_manager.Init(tmpUnit1, tmpUnit2, maxTurn, i);
-                    if (tmpIndex)
+                    tmpResult = LocalManager_Arena.instance.mc_manager.Init(tmpUnit1, tmpUnit2, maxTurn, i);
+                    if (bestResult == null)
                     {
-                        tmpResult[i] = tmpResult[i] + 3;
-                        tmpWin += 1;
+                        bestResult = tmpResult;
                     }
                     else
                     {
-                        tmpResult[i] = tmpResult[i] + 1;
+                        bestResult = bestResult.Compare(tmpResult);
+                    }
+
+                    if (tmpBestResult == null)
+                    {
+                        tmpBestResult = tmpResult;
+                    }
+                    else
+                    {
+                        tmpBestResult = tmpBestResult.Compare(tmpResult);
                     }
 
                     yield return new WaitForEndOfFrame();
                 }
 
-                LocalManager_ArenaUI.instance.StepAI($"{myUnit.skillSet[i].skillName} = {tmpWin} / {loop}");
+                LocalManager_ArenaUI.instance.StepAI($"{myUnit.skillSet[i].skillName}, current best result {tmpBestResult.GetDescription()}\n\n");
+                Debug.LogWarning($"{myUnit.skillSet[i].skillName}, current best result {tmpBestResult.GetDescription()}");
             }
             else
             {
-                tmpResult[i] = -1;
-                LocalManager_ArenaUI.instance.StepAI($"{myUnit.skillSet[i].skillName} in cooldown");
+                LocalManager_ArenaUI.instance.StepAI($"{myUnit.skillSet[i].skillName} in cooldown\n\n");
             }
 
         }
 
-        // Get the best option
-        var index = 0;
-        for (int i = 0; i < myUnit.skillSet.Count - 1; i++)
-        {
-            if (tmpResult[index] < tmpResult[i + 1])
-                index = i + 1;
-
-            //Debug.LogWarning($"Result skill {i} = {tmpResult[i]}, Result skill {i}+1 = {tmpResult[i + 1]}, index = {index}");
-        }
+        var index = bestResult.SkillIndex;
 
         LocalManager_ArenaUI.instance.StepAI($"{myUnit.unitName} use {myUnit.skillSet[index].skillName}\n\n\n");
         StartCoroutine(MovementAI(index));

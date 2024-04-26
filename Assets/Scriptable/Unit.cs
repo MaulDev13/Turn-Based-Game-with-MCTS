@@ -33,6 +33,8 @@ public class Unit : ScriptableObject
 
         foreach (Skill s in _unit.skillSet)
         {
+            s.CreateDesc();
+
             var newSkill = s.Clone();
             newSkill.currentCd = 0;
             newSkill.CreateDesc();
