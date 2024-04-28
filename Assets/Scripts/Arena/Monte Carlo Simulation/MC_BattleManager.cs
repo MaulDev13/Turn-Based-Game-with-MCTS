@@ -55,8 +55,15 @@ public class Node
         {
             if(endTurn < _other.EndTurn)
                 return this;
-            else //if (endTurn >= _other.EndTurn)
+            else if (endTurn > _other.EndTurn)
                 return _other;
+            else
+            {
+                if (score > _other.score)
+                    return this;
+                else
+                    return _other;
+            }
         }
         else if (state == LastState.Lose && _other.State != LastState.Lose)
             return _other;
@@ -66,8 +73,15 @@ public class Node
         {
             if (endTurn < _other.EndTurn)
                 return _other;
-            else //if (endTurn >= _other.EndTurn)
+            else if (endTurn > _other.EndTurn)
                 return this;
+            else
+            {
+                if (score > _other.score)
+                    return this;
+                else
+                    return _other;
+            }
         }
         else if (state == LastState.Draw && _other.State == LastState.Draw)
         {

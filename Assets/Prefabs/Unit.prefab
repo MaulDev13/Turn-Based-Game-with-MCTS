@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a1bd3faa60329a9409041bbe6f334d17, type: 3}
+  m_Sprite: {fileID: 1881239258, guid: 781f33a60a3651b44b91b5a651ef1909, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 1010740216985281359}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: adf8941debb026f40b90c548d50c80ec, type: 2}
+  m_Controller: {fileID: 22100000, guid: aef5af4ac9208ed49ad9fda6fd0de743, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -157,6 +157,7 @@ MonoBehaviour:
   myEnemy: {fileID: 0}
   isAlive: 0
   isPlayerUnit: 1
+  timeToEndTurn: 0.2
 --- !u!114 &7387760635900300446
 MonoBehaviour:
   m_ObjectHideFlags: 0
