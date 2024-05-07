@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edc2587ef71b904890d2e5c5c3b2929, type: 3}
   m_Name: Heal 1
   m_EditorClassIdentifier: 
+  _animClip: {fileID: 0}
+  _animator: {fileID: 22100000, guid: eec4c7562d9e83e4aa8d32bef73efada, type: 2}
   skillName: Heal
   cd: 5
   currentCd: 0

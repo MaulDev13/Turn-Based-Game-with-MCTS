@@ -20,24 +20,24 @@ public class LocalManager_ArenaUI : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] private GameObject actionBtnPrefabs;
+    [SerializeField] protected GameObject actionBtnPrefabs;
     [SerializeField] private GameObject unitInfoPanelPrefabs;
-    [SerializeField] private GameObject lastMovePrefabs;
-    [SerializeField] private GameObject aiStepPrefabs;
+    [SerializeField] protected GameObject lastMovePrefabs;
+    [SerializeField] protected GameObject aiStepPrefabs;
 
-    [SerializeField] private Transform actionBtnPanelParent;
+    [SerializeField] protected Transform actionBtnPanelParent;
     [SerializeField] private Transform unitInfoPanelParent;
-    [SerializeField] private Transform lastMoveParent;
-    [SerializeField] private Transform aiStepParent;
+    [SerializeField] protected Transform lastMoveParent;
+    [SerializeField] protected Transform aiStepParent;
 
-    [SerializeField] private GameObject endPanel;
-    [SerializeField] private TextMeshProUGUI endTxt;
+    [SerializeField] protected GameObject endPanel;
+    [SerializeField] protected TextMeshProUGUI endTxt;
 
-    [SerializeField] private TextMeshProUGUI turnInfoTxt;
+    [SerializeField] protected TextMeshProUGUI turnInfoTxt;
 
-    private List<ArenaActionBtn> btnActionList = new List<ArenaActionBtn>();
+    protected List<ArenaActionBtn> btnActionList = new List<ArenaActionBtn>();
 
-    public void SetUnitInfoPanel()
+    public virtual void SetUnitInfoPanel()
     {
         var newPanel1 = Instantiate(unitInfoPanelPrefabs, unitInfoPanelParent) as GameObject;
         var panelScript1 = newPanel1.GetComponent<ArenaUnitInfoPanel>();
@@ -48,7 +48,7 @@ public class LocalManager_ArenaUI : MonoBehaviour
         panelScript2.Init(LocalManager_Arena.instance.enemyUnit);
     }
 
-    public void SetActionBtn()
+    public virtual void SetActionBtn()
     {
         // Create new button if button is less than skill set capacity
         if(LocalManager_Arena.instance.unitTurn.myUnit.skillSet.Count > btnActionList.Count)
@@ -71,7 +71,7 @@ public class LocalManager_ArenaUI : MonoBehaviour
         }
     }
 
-    public void ClearActionButton()
+    public virtual void ClearActionButton()
     {
         // Set inactive all button
         for (int i = 0; i < btnActionList.Count; i++)
@@ -80,7 +80,7 @@ public class LocalManager_ArenaUI : MonoBehaviour
         }
     }
 
-    public void TurnInfo()
+    public virtual void TurnInfo()
     {
         switch (LocalManager_Arena.instance.State)
         {
@@ -104,7 +104,7 @@ public class LocalManager_ArenaUI : MonoBehaviour
         }
     }
 
-    public void EndBattle(bool _isWin)
+    public virtual void EndBattle(bool _isWin)
     {
         Debug.Log("end battle");
 
@@ -119,7 +119,7 @@ public class LocalManager_ArenaUI : MonoBehaviour
         endPanel.SetActive(true);
     }
 
-    public void EndButton()
+    public virtual void EndButton()
     {
 
         if (LocalManager_Arena.instance.State == LocalManager_Arena.BattleState.Win)
@@ -132,14 +132,14 @@ public class LocalManager_ArenaUI : MonoBehaviour
         }
     }
 
-    public void LastMove(string _value)
+    public virtual void LastMove(string _value)
     {
         var newBtn = Instantiate(lastMovePrefabs, lastMoveParent) as GameObject;
         var btnScript = newBtn.GetComponent<ArenaLastMove>();
         btnScript.Init(_value);
     }
 
-    public void StepAI(string _value)
+    public virtual void StepAI(string _value)
     {
         var newStepAi = Instantiate(aiStepPrefabs, aiStepParent) as GameObject;
         var newText = newStepAi.GetComponent<TextMeshProUGUI>();

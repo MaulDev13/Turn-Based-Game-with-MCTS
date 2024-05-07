@@ -19,6 +19,8 @@ public enum AttackType
 [Serializable]
 public class Skill : ScriptableObject
 {
+    [SerializeField] public AnimatorOverrideController _animator;
+
     [SerializeField] public string skillName;
 
     public int cd;

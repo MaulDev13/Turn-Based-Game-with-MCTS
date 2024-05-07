@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8143704916dc44eb0efbb16b142e29, type: 3}
   m_Name: Shield 1
   m_EditorClassIdentifier: 
+  _animator: {fileID: 22100000, guid: eec4c7562d9e83e4aa8d32bef73efada, type: 2}
   skillName: Shield
   cd: 5
   currentCd: 0

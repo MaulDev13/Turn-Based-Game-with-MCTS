@@ -10,6 +10,9 @@ public class BattleUnit : MonoBehaviour
     public UnitEvent iTakeDamage;
     public UnitEvent iDead;
 
+    public delegate void UnitEvent2(Skill _skill);
+    public UnitEvent2 iAction2;
+
     [SerializeField] private BattleUnitAnimation myAnim;
 
     [SerializeField] public Unit myUnit;
@@ -218,7 +221,8 @@ public class BattleUnit : MonoBehaviour
 
         isAct = false;
 
-        iAction?.Invoke();
+        //iAction?.Invoke();
+        iAction2?.Invoke(s);
 
         s.Use(this, myEnemy);
         LocalManager_ArenaUI.instance.LastMove($"#{LocalManager_Arena.instance.CurrentTurn} - {s.CreateLastMove(this, myEnemy)}");

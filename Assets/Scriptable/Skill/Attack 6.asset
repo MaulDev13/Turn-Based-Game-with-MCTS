@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08fe67bb7ad99334f87d68e2e864b94b, type: 3}
   m_Name: Attack 6
   m_EditorClassIdentifier: 
+  _animator: {fileID: 22100000, guid: aef5af4ac9208ed49ad9fda6fd0de743, type: 2}
   skillName: Penetration Attack
   cd: 5
   currentCd: 0

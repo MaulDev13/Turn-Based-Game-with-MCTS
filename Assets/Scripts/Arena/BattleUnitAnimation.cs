@@ -9,14 +9,15 @@ public class BattleUnitAnimation : MonoBehaviour
 
     private void OnDisable()
     {
-        battleUnit.iAction -= AnimAct;
+        //battleUnit.iAction -= AnimAct;
         battleUnit.iTakeDamage -= AnimTakeDamage;
         battleUnit.iDead -= AnimDead;
     }
 
     public void Init(Sprite art)
     {
-        battleUnit.iAction += AnimAct;
+        //battleUnit.iAction += AnimAct;
+        battleUnit.iAction2 += AnimAct;
         battleUnit.iTakeDamage += AnimTakeDamage;
         battleUnit.iDead += AnimDead;
 
@@ -24,15 +25,23 @@ public class BattleUnitAnimation : MonoBehaviour
 
         if(!battleUnit.isPlayerUnit)
         {
-            spriteRenderer.flipX = true;
+            //spriteRenderer.flipX = true;
         } else
         {
-            spriteRenderer.flipX = false;
+            //spriteRenderer.flipX = false;
         }
     }
 
     public void AnimAct()
     {
+        animControl.SetTrigger("Attack");
+    }
+
+    public void AnimAct(Skill _skill)
+    {
+        if(_skill._animator != null)
+            animControl.runtimeAnimatorController = _skill._animator;
+
         animControl.SetTrigger("Attack");
     }
 

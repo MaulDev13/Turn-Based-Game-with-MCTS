@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 092183e3f1bda3f418f0e7a7dc6e1781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArenaSceneName: Arena
+  ArenaSceneName: Arena 2
   MapSceneName: Main Menu
   isPlayerFirstTurn: 1
   units:
