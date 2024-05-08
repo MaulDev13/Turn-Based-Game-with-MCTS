@@ -10,6 +10,7 @@ public class BattleUnitAnimation : MonoBehaviour
     private void OnDisable()
     {
         //battleUnit.iAction -= AnimAct;
+        battleUnit.iAction2 -= AnimAct;
         battleUnit.iTakeDamage -= AnimTakeDamage;
         battleUnit.iDead -= AnimDead;
     }
