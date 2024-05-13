@@ -40,7 +40,15 @@ public class FinalResult
         }
 
 
-        if (GetValue() >= _data.GetValue())
+        if(GetValue() == _data.GetValue())
+        {
+            if (bestNode == bestNode.Compare(_data.bestNode))
+                return this;
+            else
+                return _data;
+        }
+
+        if (GetValue() > _data.GetValue())
             return this;
 
         return _data;
