@@ -154,11 +154,14 @@ public class BattleUnit : MonoBehaviour
         //tmpUnit2.Init(myEnemy.myUnit);
 
         // Result check
+        List<FinalResult> finalResults = new List<FinalResult>();
         Node bestResult = null;
 
         LocalManager_ArenaUI.instance.StepAI($"#{LocalManager_Arena.instance.CurrentTurn}");
         LocalManager_ArenaUI.instance.StepAI($"{myUnit.unitName} turn, using Monte Carlo simulation\n");
 
+        
+        // Index
         for (int i = 0; i < myUnit.skillSet.Count; i++)
         {
             Node tmpResult = null;
@@ -180,6 +183,7 @@ public class BattleUnit : MonoBehaviour
                     if (tmpResult.State == LastState.Win)
                         winCount++;
 
+                    // Best result
                     if (bestResult == null)
                     {
                         bestResult = tmpResult;
@@ -189,6 +193,7 @@ public class BattleUnit : MonoBehaviour
                         bestResult = bestResult.Compare(tmpResult);
                     }
 
+                    // Tmp Best Result
                     if (tmpBestResult == null)
                     {
                         tmpBestResult = tmpResult;
@@ -201,11 +206,13 @@ public class BattleUnit : MonoBehaviour
                     yield return new WaitForEndOfFrame();
                 }
 
-                var newInfo = $"{myUnit.skillSet[i].skillName}: {winCount}/{loop}. current best result {tmpBestResult.GetDescription()}\n\n";
+                // Adding final result in this index. Get bestResultlist and winCountList
+                var newFinalResult = new FinalResult(i, tmpBestResult.Score, winCount, loop, tmpBestResult);
+                finalResults.Add(newFinalResult);
+
+                var newInfo = $"{myUnit.skillSet[i].skillName}: {winCount}/{loop}. Current best result {tmpBestResult.GetDescription()}\n\n";
                 LocalManager_ArenaUI.instance.StepAI(newInfo);
                 Debug.LogWarning(newInfo);
-
-                //LocalManager_ArenaUI.instance.StepAI($"{myUnit.skillSet[i].skillName}, current best result {tmpBestResult.GetDescription()}\n\n");
             }
             else
             {
@@ -214,9 +221,26 @@ public class BattleUnit : MonoBehaviour
 
         }
 
-        var index = bestResult.SkillIndex;
+        // Check final result
+        FinalResult bestFinalResult = null;
 
-        LocalManager_ArenaUI.instance.StepAI($"{myUnit.unitName} use {myUnit.skillSet[index].skillName}\n\n\n");
+        for(int i = 0; i < finalResults.Count; i++)
+        {
+            if (bestFinalResult == null)
+                bestFinalResult = finalResults[i];
+            else
+                bestFinalResult = bestFinalResult.Compare(finalResults[i]);
+        }
+
+        var index = bestFinalResult.skillIndex;
+        LocalManager_ArenaUI.instance.StepAI($"{myUnit.unitName} use {myUnit.skillSet[bestFinalResult.skillIndex].skillName}.\n" +
+            $"Current best result {bestFinalResult.bestNode.GetDescription()}.\n Skill index win ratio = {bestFinalResult.winCount}/{bestFinalResult.loop}.\n" +
+            $"Final score = {bestFinalResult.bestNode.Score}+{bestFinalResult.GetWinValue()} => {bestFinalResult.GetValue()} \n\n\n");
+
+        //var index = bestResult.SkillIndex;
+        //LocalManager_ArenaUI.instance.StepAI($"{myUnit.unitName} use {myUnit.skillSet[index].skillName}\n\n\n");
+
+
         StartCoroutine(MovementAI(index));
     }
 
