@@ -166,6 +166,8 @@ public class BattleUnit : MonoBehaviour
 
             if (myUnit.skillSet[i].CheckCD())
             {
+                int winCount = 0;
+
                 for (int j = 0; j < loop; j++)
                 {
                     // Reset all resource
@@ -174,6 +176,10 @@ public class BattleUnit : MonoBehaviour
 
                     // Simulation
                     tmpResult = LocalManager_Arena.instance.mc_manager.Init(tmpUnit1, tmpUnit2, maxTurn, i);
+
+                    if (tmpBestResult.State == LastState.Win)
+                        winCount++;
+
                     if (bestResult == null)
                     {
                         bestResult = tmpResult;
@@ -195,8 +201,11 @@ public class BattleUnit : MonoBehaviour
                     yield return new WaitForEndOfFrame();
                 }
 
-                LocalManager_ArenaUI.instance.StepAI($"{myUnit.skillSet[i].skillName}, current best result {tmpBestResult.GetDescription()}\n\n");
-                Debug.LogWarning($"{myUnit.skillSet[i].skillName}, current best result {tmpBestResult.GetDescription()}");
+                var newInfo = $"{myUnit.skillSet[i].skillName}: {winCount}/{loop}. current best result {tmpBestResult.GetDescription()}\n\n";
+                LocalManager_ArenaUI.instance.StepAI(newInfo);
+                Debug.LogWarning(newInfo);
+
+                //LocalManager_ArenaUI.instance.StepAI($"{myUnit.skillSet[i].skillName}, current best result {tmpBestResult.GetDescription()}\n\n");
             }
             else
             {
