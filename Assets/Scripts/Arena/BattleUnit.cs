@@ -232,15 +232,6 @@ public class BattleUnit : MonoBehaviour
                 bestFinalResult = bestFinalResult.Compare(finalResults[i]);
         }
 
-        if(finalResults[0] == finalResults[2])
-        {
-            Debug.Log("Same final result");
-        }
-        else
-        {
-            Debug.Log("Different");
-        }
-
         var index = bestFinalResult.skillIndex;
         LocalManager_ArenaUI.instance.StepAI($"{myUnit.unitName} use {myUnit.skillSet[bestFinalResult.skillIndex].skillName}.\n" +
             $"Current best result {bestFinalResult.bestNode.GetDescription()}.\n Skill index win ratio = {bestFinalResult.winCount}/{bestFinalResult.loop}.\n" +
