@@ -177,7 +177,7 @@ public class BattleUnit : MonoBehaviour
                     // Simulation
                     tmpResult = LocalManager_Arena.instance.mc_manager.Init(tmpUnit1, tmpUnit2, maxTurn, i);
 
-                    if (tmpBestResult.State == LastState.Win)
+                    if (tmpResult.State == LastState.Win)
                         winCount++;
 
                     if (bestResult == null)
