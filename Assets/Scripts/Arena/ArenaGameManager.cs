@@ -20,21 +20,35 @@ public class ArenaGameManager : MonoBehaviour
     }
     #endregion
 
+    [Header("Setting")]
     [SerializeField] public string ArenaSceneName;
     [SerializeField] public string MapSceneName;
 
     [SerializeField] public bool isPlayerFirstTurn = true;
 
+    [Header("Library")]
+    public Unit defaultPlayerUnit;
+    public List<Unit> unitLevels = new List<Unit>();
     public List<Unit> units = new List<Unit>();
 
     [Header("Inspector")]
     public Unit playerUnitBase;
     public Unit enemyUnitBase;
 
+    [HideInInspector] public int currentLevel;
+
     public void BattleStart(Unit unit)
     {
         playerUnitBase = unit;
         enemyUnitBase = unit;
+
+        SceneManager.LoadScene(ArenaSceneName, LoadSceneMode.Single);
+    }
+
+    public void BattleStart(Unit _playerUnit, Unit _enemyUnit)
+    {
+        playerUnitBase = _playerUnit;
+        enemyUnitBase = _enemyUnit;
 
         SceneManager.LoadScene(ArenaSceneName, LoadSceneMode.Single);
     }
@@ -68,5 +82,15 @@ public class ArenaGameManager : MonoBehaviour
     {
         var index = Random.Range(0, units.Count);
         return units[index];
+    }
+
+    public void LevelUp()
+    {
+        currentLevel++;
+    }
+
+    public void MaxLevel()
+    {
+        currentLevel = unitLevels.Count + 1;
     }
 }

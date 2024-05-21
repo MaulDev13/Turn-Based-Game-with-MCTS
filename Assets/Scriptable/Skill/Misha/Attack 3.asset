@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08fe67bb7ad99334f87d68e2e864b94b, type: 3}
+  m_Name: Attack 3
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 22100000, guid: 6df730d44b29d90498ef30a778316895, type: 2}
+  skillName: Ultimate
+  cd: 10
+  currentCd: 0
+  skillDesc: Deal damage to Enemy with value 1 x 600. Attack type is normal
+  target: 1
+  repeat: 1
+  value: 600
+  attackType: 0

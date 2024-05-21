@@ -23,12 +23,12 @@ public class FinalResult
 
     public float GetWinValue()
     {
-        return winCount / (float)loop * 1000;
+        return winCount / (float)loop * 10000;
     }
 
     public float GetValue()
     {
-        return bestResult + (winCount / (float)loop * 1000);
+        return bestResult + (winCount / (float)loop * 10000);
     }
 
     public FinalResult Compare(FinalResult _data)
@@ -40,15 +40,7 @@ public class FinalResult
         }
 
 
-        if(GetValue() == _data.GetValue())
-        {
-            if (bestNode == bestNode.Compare(_data.bestNode))
-                return this;
-            else
-                return _data;
-        }
-
-        if (GetValue() > _data.GetValue())
+        if (GetValue() >= _data.GetValue())
             return this;
 
         return _data;

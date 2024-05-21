@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b7aea79ef0a97f45ae4ffc6df33d35b, type: 3}
+  m_Name: Monster2
+  m_EditorClassIdentifier: 
+  unitName: Skeleton
+  animator: {fileID: 22100000, guid: 4aa8e1fad671f9840851b4f6c952855b, type: 2}
+  art: {fileID: -1207150562, guid: aa38791fa39834345bdc91622717ca7e, type: 3}
+  avatar: {fileID: -1207150562, guid: aa38791fa39834345bdc91622717ca7e, type: 3}
+  healthPoint: 1000
+  maxHealtPoint: 10000
+  shieldPoint: 0
+  skillSet:
+  - {fileID: 11400000, guid: 4ea4dcc333583864aa0abbf6fb00ed34, type: 2}
+  - {fileID: 11400000, guid: 30046dbf1fc24534ebe1bca8ff0103b9, type: 2}
+  - {fileID: 11400000, guid: 622f556fca764684e8a2567618d66b53, type: 2}
+  - {fileID: 11400000, guid: cbddf9a7e3a7c7741b947a0dced63df4, type: 2}

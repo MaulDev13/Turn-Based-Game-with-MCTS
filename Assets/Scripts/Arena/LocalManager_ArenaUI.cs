@@ -30,12 +30,18 @@ public class LocalManager_ArenaUI : MonoBehaviour
     [SerializeField] protected Transform lastMoveParent;
     [SerializeField] protected Transform aiStepParent;
 
+    [SerializeField] protected GameObject nextBtn_endPanel;
     [SerializeField] protected GameObject endPanel;
     [SerializeField] protected TextMeshProUGUI endTxt;
 
     [SerializeField] protected TextMeshProUGUI turnInfoTxt;
 
     protected List<ArenaActionBtn> btnActionList = new List<ArenaActionBtn>();
+
+    private void Start()
+    {
+        endPanel.SetActive(false);
+    }
 
     public virtual void SetUnitInfoPanel()
     {
@@ -106,21 +112,35 @@ public class LocalManager_ArenaUI : MonoBehaviour
 
     public virtual void EndBattle(bool _isWin)
     {
-        Debug.Log("end battle");
+        Debug.Log("End battle");
 
-        if(_isWin)
+        if (_isWin)
         {
             endTxt.text = "You Win!";
-        } else
+        }
+        else
         {
             endTxt.text = "Defeat!";
+        }
+
+        if (ArenaGameManager.instance.currentLevel < ArenaGameManager.instance.unitLevels.Count - 1 && LocalManager_Arena.instance.State == LocalManager_Arena.BattleState.Win)
+        {
+            nextBtn_endPanel.SetActive(true);
         }
 
         endPanel.SetActive(true);
     }
 
+    public virtual void NextButton()
+    {
+        ArenaGameManager.instance.LevelUp();
+
+        ArenaGameManager.instance.BattleStart(ArenaGameManager.instance.defaultPlayerUnit, ArenaGameManager.instance.unitLevels[ArenaGameManager.instance.currentLevel]);
+    }
+
     public virtual void EndButton()
     {
+        ArenaGameManager.instance.currentLevel = 99;
 
         if (LocalManager_Arena.instance.State == LocalManager_Arena.BattleState.Win)
         {

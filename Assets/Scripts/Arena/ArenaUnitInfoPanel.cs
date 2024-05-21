@@ -30,10 +30,12 @@ public class ArenaUnitInfoPanel : MonoBehaviour
 
     public void Init(BattleUnit unit)
     {
-        if (avatarHolder != null && avatar != null)
-            avatarHolder.sprite = avatar;
-
         myBattleUnit = unit;
+
+        if (avatarHolder != null && avatar == null && myBattleUnit.myUnit.avatar != null)
+            avatarHolder.sprite = myBattleUnit.myUnit.avatar;
+        else if (avatarHolder != null && avatar != null)
+            avatarHolder.sprite = avatar;
 
         myBattleUnit.iUpdate += UpdateView;
 

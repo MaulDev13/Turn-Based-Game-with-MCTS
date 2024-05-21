@@ -14,34 +14,58 @@ public class LocalManager_MainMenu : MonoBehaviour
 
     [SerializeField] private Unit unitBase;
 
-    // Terpasang pada fungsi Button di StartButton;
-    public void OnBtnStart()
+    public void OnBtnStart_Lv(int _level)
     {
-        // This is an example on how to go to Battle or Arena
-        if (unitBase == null)
-            ArenaGameManager.instance.BattleStart(ArenaGameManager.instance.RandomUnit());
-        else
-            ArenaGameManager.instance.BattleStart(unitBase);
+        ArenaGameManager.instance.isPlayerFirstTurn = true;
+
+        GameLevel(_level);
+    }
+
+    public void OnBtnStart_RandomEnemy()
+    {
+        ArenaGameManager.instance.isPlayerFirstTurn = true;
+
+        ArenaGameManager.instance.MaxLevel();
+        GameStart(ArenaGameManager.instance.defaultPlayerUnit, ArenaGameManager.instance.RandomUnit());
+    }
+
+    public void OnBtnStart_Random()
+    {
+        ArenaGameManager.instance.isPlayerFirstTurn = true;
+
+        ArenaGameManager.instance.MaxLevel();
+        GameStart(ArenaGameManager.instance.RandomUnit(), ArenaGameManager.instance.RandomUnit());
+    }
+
+    public void OnBtnStart_Mirror()
+    {
+        ArenaGameManager.instance.MaxLevel();
+        GameStart(ArenaGameManager.instance.defaultPlayerUnit, ArenaGameManager.instance.defaultPlayerUnit);
     }
 
     public void OnBtnStart_Play1st()
     {
         ArenaGameManager.instance.isPlayerFirstTurn = true;
 
-        if (unitBase == null)
-            ArenaGameManager.instance.BattleStart(ArenaGameManager.instance.RandomUnit());
-        else
-            ArenaGameManager.instance.BattleStart(unitBase);
+        OnBtnStart_Mirror();
     }
 
     public void OnBtnStart_Play2nd()
     {
         ArenaGameManager.instance.isPlayerFirstTurn = false;
 
-        if (unitBase == null)
-            ArenaGameManager.instance.BattleStart(ArenaGameManager.instance.RandomUnit());
-        else
-            ArenaGameManager.instance.BattleStart(unitBase);
+        OnBtnStart_Mirror();
+    }
+
+    void GameLevel(int _currentLevel)
+    {
+        ArenaGameManager.instance.currentLevel = _currentLevel;
+        GameStart(ArenaGameManager.instance.defaultPlayerUnit, ArenaGameManager.instance.unitLevels[ArenaGameManager.instance.currentLevel]);
+    }
+
+    void GameStart(Unit _playerUnit, Unit _enemyUnit)
+    {
+        ArenaGameManager.instance.BattleStart(_playerUnit, _enemyUnit);
     }
 
     // Terpasang pada fungsi Button di StartButton;

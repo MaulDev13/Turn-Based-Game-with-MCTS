@@ -9,7 +9,9 @@ public class Unit : ScriptableObject
     [Header("Stat")]
     [SerializeField] public string unitName;
 
+    [SerializeField] public AnimatorOverrideController animator;
     [SerializeField] public Sprite art;
+    [SerializeField] public Sprite avatar;
 
     [SerializeField]
     public float healthPoint = 10000; // current health point
@@ -23,7 +25,9 @@ public class Unit : ScriptableObject
     {
         unitName = _unit.unitName;
 
+        animator = _unit.animator;
         art = _unit.art;
+        avatar = _unit.avatar;
 
         healthPoint = _unit.healthPoint;
         maxHealtPoint = healthPoint;

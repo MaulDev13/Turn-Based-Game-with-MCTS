@@ -13,18 +13,19 @@ MonoBehaviour:
   m_Name: Default Unit
   m_EditorClassIdentifier: 
   unitName: Default
+  animator: {fileID: 22100000, guid: aef5af4ac9208ed49ad9fda6fd0de743, type: 2}
   art: {fileID: 21300000, guid: a1bd3faa60329a9409041bbe6f334d17, type: 3}
+  avatar: {fileID: 21300000, guid: 52ace910927a3b246a26e4e5dff6b134, type: 3}
   healthPoint: 2000
   maxHealtPoint: 0
   shieldPoint: 0
   skillSet:
   - {fileID: 11400000, guid: 6525967e54aede949adccdf094ae563f, type: 2}
-  - {fileID: 11400000, guid: f8a47edafee6ae141b38a28130e76fdb, type: 2}
   - {fileID: 11400000, guid: 9dfd4627ee1635f4b9ca5da292585018, type: 2}
+  - {fileID: 11400000, guid: f8a47edafee6ae141b38a28130e76fdb, type: 2}
   - {fileID: 11400000, guid: c0188465fce841e4dadcc2cdbe805595, type: 2}
-  - {fileID: 11400000, guid: a54bbe80bb7421647a42dc2909cff5ac, type: 2}
   - {fileID: 11400000, guid: f2ce32fb0ad1aa743a1731d480d77488, type: 2}
+  - {fileID: 11400000, guid: a54bbe80bb7421647a42dc2909cff5ac, type: 2}
   - {fileID: 11400000, guid: 27e9e0564f1a1784d881901cc40822ab, type: 2}
   - {fileID: 11400000, guid: 9780d321ef280114daa8db0246569f35, type: 2}
   - {fileID: 11400000, guid: f27657676a21a5c4cb164be203343264, type: 2}
-  - {fileID: 11400000, guid: 551d167f3b5346647aeb13561a15f3e3, type: 2}

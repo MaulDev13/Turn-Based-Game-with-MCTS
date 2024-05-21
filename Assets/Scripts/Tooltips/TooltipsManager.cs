@@ -31,39 +31,11 @@ public class TooltipsManager : MonoBehaviour
     {
         tipsText.text = tips;
 
-        tipsWindow.sizeDelta = new Vector2(tipsText.preferredWidth > 200 ? 200 : tipsText.preferredWidth, tipsText.preferredHeight);
+        tipsWindow.sizeDelta = new Vector2(tipsText.preferredWidth > 200 ? 200: tipsText.preferredWidth, tipsText.preferredHeight);
 
         tipsWindow.gameObject.SetActive(true);
-
-        if (mousePos.x < Screen.width / 2f)
-        {
-            // => left half
-            if(mousePos.y < Screen.height / 2f)
-            {
-                // upper
-                tipsWindow.transform.position = new Vector2(mousePos.x, mousePos.y + tipsWindow.sizeDelta.y);
-            }
-            else
-            {
-                // lower
-                tipsWindow.transform.position = new Vector2(mousePos.x, mousePos.y);
-            }
-        }
-        else
-        {
-            // => right half
-            if (mousePos.y < Screen.height / 2f)
-            {
-                // upper
-                tipsWindow.transform.position = new Vector2(mousePos.x - tipsWindow.sizeDelta.x, mousePos.y + tipsWindow.sizeDelta.y);
-            }
-            else
-            {
-                // lower
-                tipsWindow.transform.position = new Vector2(mousePos.x - tipsWindow.sizeDelta.x, mousePos.y);
-            }
-        }
-
+        //tipsWindow.transform.position = new Vector2(mousePos.x + tipsWindow.sizeDelta.x * 2, mousePos.y);
+        tipsWindow.transform.position = new Vector2(mousePos.x + tipsWindow.sizeDelta.x, mousePos.y);
     }
 
     private void HideTip()

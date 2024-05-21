@@ -305,7 +305,7 @@ public class BattleUnit : MonoBehaviour
             }
         }
 
-        if(_value > 0)
+        //if(_value > 0)
             iTakeDamage?.Invoke();
 
         if (ChangeHealth(-_value) <= 0)
