@@ -12,6 +12,7 @@ public class BattleUnit : MonoBehaviour
 
     public delegate void UnitEvent2(Skill _skill);
     public UnitEvent2 iAction2;
+    public UnitEvent2 iTakeDamage2;
 
     [SerializeField] private BattleUnitAnimation myAnim;
 
@@ -67,8 +68,6 @@ public class BattleUnit : MonoBehaviour
 
         if (!isPlayerUnit)
         {
-            //StartCoroutine(MovementAI());
-            //StartCoroutine(MovementAI2());
             StartCoroutine(MovementAI_MonteCarlo(LocalManager_Arena.instance.loopOnSimulation, LocalManager_Arena.instance.maxTurnOnSimulation));
         }
 
@@ -285,7 +284,7 @@ public class BattleUnit : MonoBehaviour
         return _value;
     }
 
-    public float TakeDamage(float _value, AttackType _attackType)
+    public float TakeDamage(float _value, AttackType _attackType, Skill _skill)
     {
         if (_attackType == AttackType.Break && myUnit.shieldPoint > 0)
             _value *= 2f;
@@ -306,7 +305,8 @@ public class BattleUnit : MonoBehaviour
         }
 
         //if(_value > 0)
-            iTakeDamage?.Invoke();
+        iTakeDamage?.Invoke();
+        iTakeDamage2?.Invoke(_skill);
 
         if (ChangeHealth(-_value) <= 0)
         {

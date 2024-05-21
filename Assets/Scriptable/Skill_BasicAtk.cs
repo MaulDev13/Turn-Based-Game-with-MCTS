@@ -17,20 +17,20 @@ public class Skill_BasicAtk : Skill
             case SkillTarget.Self:
                 for (int i = 0; i < repeat; i++)
                 {
-                    user.TakeDamage(value, attackType);
+                    user.TakeDamage(value, attackType, this);
                 }
                 break;
             case SkillTarget.Enemy:
                 for (int i = 0; i < repeat; i++)
                 {
-                    enemy.TakeDamage(value, attackType);
+                    enemy.TakeDamage(value, attackType, this);
                 }
                 break;
             case SkillTarget.Both:
                 for (int i = 0; i < repeat; i++)
                 {
-                    user.TakeDamage(value, attackType);
-                    enemy.TakeDamage(value, attackType);
+                    user.TakeDamage(value, attackType, this);
+                    enemy.TakeDamage(value, attackType, this);
                 }
                 break;
             default:

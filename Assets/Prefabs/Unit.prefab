@@ -175,3 +175,5 @@ MonoBehaviour:
   animControl: {fileID: 2207193636398761523}
   hitEffect: {fileID: 0}
   defaultHitEffect: {fileID: 4156442179713264713, guid: 33c123d95a679914d86cb33210c3bd82, type: 3}
+  actEffect: {fileID: 0}
+  defaultActEffect: {fileID: 4192837464934224993, guid: e73b58dd9ba132a49abca7ee7c0abdf6, type: 3}

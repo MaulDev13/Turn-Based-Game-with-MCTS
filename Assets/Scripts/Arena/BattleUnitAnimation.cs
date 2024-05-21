@@ -11,10 +11,14 @@ public class BattleUnitAnimation : MonoBehaviour
     [HideInInspector] public GameObject hitEffect;
     [SerializeField] private GameObject defaultHitEffect;
 
+    [HideInInspector] public GameObject actEffect;
+    [SerializeField] private GameObject defaultActEffect;
+
     private void OnDisable()
     {
         //battleUnit.iAction -= AnimAct;
-        battleUnit.iTakeDamage -= AnimTakeDamage;
+        battleUnit.iAction2 -= AnimAct;
+        battleUnit.iTakeDamage2 -= AnimTakeDamage;
         battleUnit.iDead -= AnimDead;
     }
 
@@ -24,10 +28,11 @@ public class BattleUnitAnimation : MonoBehaviour
             animControl.runtimeAnimatorController = battleUnit.myUnit.animator;
 
         hitEffect = defaultHitEffect;
+        actEffect = defaultActEffect;
 
         //battleUnit.iAction += AnimAct;
         battleUnit.iAction2 += AnimAct;
-        battleUnit.iTakeDamage += AnimTakeDamage;
+        battleUnit.iTakeDamage2 += AnimTakeDamage;
         battleUnit.iDead += AnimDead;
 
         spriteRenderer.sprite = art;
@@ -47,17 +52,39 @@ public class BattleUnitAnimation : MonoBehaviour
             animControl.runtimeAnimatorController = _skill._animator;
 
         animControl.SetTrigger("Attack");
+
+        if (_skill.actEffect != null)
+            actEffect = _skill.actEffect;
+        else
+            actEffect = defaultActEffect;
+
+        Instantiate(actEffect, transform.position, transform.rotation);
     }
 
-    public void AnimTakeDamage()
+    public void AnimTakeDamage(Skill _skill)
     {
         animControl.SetTrigger("TakeDamage");
 
-        Instantiate(defaultHitEffect, transform.position, transform.rotation);
+        if (_skill.hitEffect != null)
+            hitEffect = _skill.hitEffect;
+        else
+            hitEffect = defaultHitEffect;
+
+        Instantiate(hitEffect, transform.position, transform.rotation);
     }
 
     public void AnimDead()
     {
         animControl.SetTrigger("Dead");
+    }
+
+    public void GetHitEffect(Skill s)
+    {
+
+    }
+
+    public void GetActEffect(Skill s)
+    {
+
     }
 }

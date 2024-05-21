@@ -21,6 +21,9 @@ public class Skill : ScriptableObject
 {
     [SerializeField] public AnimatorOverrideController _animator;
 
+    [SerializeField] public GameObject hitEffect;
+    [SerializeField] public GameObject actEffect;
+
     [SerializeField] public string skillName;
 
     public int cd;

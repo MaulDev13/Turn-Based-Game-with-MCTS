@@ -21,14 +21,14 @@ public class Skill_AttackAndDefense : Skill
                 for (int i = 0; i < repeat; i++)
                 {
                     enemy.AddShield(shield);
-                    user.TakeDamage(damage, attackType);
+                    user.TakeDamage(damage, attackType, this);
                 }
                 break;
             case SkillTarget.Enemy:
                 for (int i = 0; i < repeat; i++)
                 {
                     user.AddShield(shield);
-                    enemy.TakeDamage(damage, attackType);
+                    enemy.TakeDamage(damage, attackType, this);
                 }
                 break;
             case SkillTarget.Both:
@@ -36,8 +36,8 @@ public class Skill_AttackAndDefense : Skill
                 {
                     user.AddShield(shield);
                     enemy.AddShield(shield);
-                    user.TakeDamage(damage, attackType);
-                    enemy.TakeDamage(damage, attackType);
+                    user.TakeDamage(damage, attackType, this);
+                    enemy.TakeDamage(damage, attackType, this);
                 }
                 break;
             default:
