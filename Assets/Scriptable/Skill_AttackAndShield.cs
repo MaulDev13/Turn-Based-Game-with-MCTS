@@ -20,22 +20,22 @@ public class Skill_AttackAndDefense : Skill
             case SkillTarget.Self:
                 for (int i = 0; i < repeat; i++)
                 {
-                    enemy.AddShield(shield);
+                    enemy.AddShield(shield, this);
                     user.TakeDamage(damage, attackType, this);
                 }
                 break;
             case SkillTarget.Enemy:
                 for (int i = 0; i < repeat; i++)
                 {
-                    user.AddShield(shield);
+                    user.AddShield(shield, this);
                     enemy.TakeDamage(damage, attackType, this);
                 }
                 break;
             case SkillTarget.Both:
                 for (int i = 0; i < repeat; i++)
                 {
-                    user.AddShield(shield);
-                    enemy.AddShield(shield);
+                    user.AddShield(shield, this);
+                    enemy.AddShield(shield, this);
                     user.TakeDamage(damage, attackType, this);
                     enemy.TakeDamage(damage, attackType, this);
                 }

@@ -13,6 +13,8 @@ public class BattleUnit : MonoBehaviour
     public delegate void UnitEvent2(Skill _skill);
     public UnitEvent2 iAction2;
     public UnitEvent2 iTakeDamage2;
+    public UnitEvent2 iHeal2;
+    public UnitEvent2 iShield2;
 
     [SerializeField] private BattleUnitAnimation myAnim;
 
@@ -272,7 +274,7 @@ public class BattleUnit : MonoBehaviour
         LocalManager_Arena.instance.EndTurn();
     }
 
-    public float Heal(float _value)
+    public float Heal(float _value, Skill _skill)
     {
         if(ChangeHealth(_value) <= 0)
         {
@@ -280,6 +282,7 @@ public class BattleUnit : MonoBehaviour
         }
 
         iUpdate?.Invoke();
+        iHeal2?.Invoke(_skill);
 
         return _value;
     }
@@ -353,9 +356,11 @@ public class BattleUnit : MonoBehaviour
         myUnit.shieldPoint = 0f;
     }
 
-    public void AddShield(float _value)
+    public void AddShield(float _value, Skill _skill)
     {
         myUnit.shieldPoint += _value;
+
+        iShield2?.Invoke(_skill);
     }
 
     public string GetName()

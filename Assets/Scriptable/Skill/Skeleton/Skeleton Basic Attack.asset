@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Skeleton Basic Attack
   m_EditorClassIdentifier: 
   _animator: {fileID: 22100000, guid: 7029befdc3c09ea4fb57ba75cd8b54c7, type: 2}
+  hitEffect: {fileID: 143556661269741744, guid: 569343eef8b29e54383c0703e85731a6, type: 3}
+  actEffect: {fileID: 0}
   skillName: Basic Attack
   cd: 0
   currentCd: 0

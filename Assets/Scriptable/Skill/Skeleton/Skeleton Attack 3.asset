@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Skeleton Attack 3
   m_EditorClassIdentifier: 
   _animator: {fileID: 22100000, guid: c12337bcb430b0a4c801747a0c6a2660, type: 2}
+  hitEffect: {fileID: 143556661269741744, guid: 569343eef8b29e54383c0703e85731a6, type: 3}
+  actEffect: {fileID: 0}
   skillName: Swing
   cd: 4
   currentCd: 0

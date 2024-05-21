@@ -15,20 +15,20 @@ public class Skill_Heal : Skill
             case SkillTarget.Self:
                 for (int i = 0; i < repeat; i++)
                 {
-                    user.Heal(value);
+                    user.Heal(value, this);
                 }
                 break;
             case SkillTarget.Enemy:
                 for (int i = 0; i < repeat; i++)
                 {
-                    enemy.Heal(value);
+                    enemy.Heal(value, this);
                 }
                 break;
             case SkillTarget.Both:
                 for (int i = 0; i < repeat; i++)
                 {
-                    user.Heal(value);
-                    enemy.Heal(value);
+                    user.Heal(value, this);
+                    enemy.Heal(value, this);
                 }
                 break;
             default:

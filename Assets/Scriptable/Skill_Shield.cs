@@ -17,20 +17,20 @@ public class Skill_Shield : Skill
             case SkillTarget.Self:
                 for (int i = 0; i < repeat; i++)
                 {
-                    user.AddShield(value);
+                    user.AddShield(value, this);
                 }
                 break;
             case SkillTarget.Enemy:
                 for (int i = 0; i < repeat; i++)
                 {
-                    enemy.AddShield(value);
+                    enemy.AddShield(value, this);
                 }                    
                 break;
             case SkillTarget.Both:
                 for (int i = 0; i < repeat; i++)
                 {
-                    user.AddShield(value);
-                    enemy.AddShield(value);
+                    user.AddShield(value, this);
+                    enemy.AddShield(value, this);
                 }                    
                 break;
             default:

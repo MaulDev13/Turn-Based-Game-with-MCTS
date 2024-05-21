@@ -20,6 +20,9 @@ public class BattleUnitAnimation : MonoBehaviour
         battleUnit.iAction2 -= AnimAct;
         battleUnit.iTakeDamage2 -= AnimTakeDamage;
         battleUnit.iDead -= AnimDead;
+
+        battleUnit.iShield2 -= AnimTarget;
+        battleUnit.iHeal2 -= AnimTarget;
     }
 
     public void Init(Sprite art)
@@ -34,6 +37,9 @@ public class BattleUnitAnimation : MonoBehaviour
         battleUnit.iAction2 += AnimAct;
         battleUnit.iTakeDamage2 += AnimTakeDamage;
         battleUnit.iDead += AnimDead;
+
+        battleUnit.iShield2 += AnimTarget;
+        battleUnit.iHeal2 += AnimTarget;
 
         spriteRenderer.sprite = art;
 
@@ -73,18 +79,18 @@ public class BattleUnitAnimation : MonoBehaviour
         Instantiate(hitEffect, transform.position, transform.rotation);
     }
 
+    public void AnimTarget(Skill _skill)
+    {
+        if (_skill.hitEffect != null)
+            hitEffect = _skill.hitEffect;
+        else
+            hitEffect = defaultHitEffect;
+
+        Instantiate(hitEffect, transform.position, transform.rotation);
+    }
+
     public void AnimDead()
     {
         animControl.SetTrigger("Dead");
-    }
-
-    public void GetHitEffect(Skill s)
-    {
-
-    }
-
-    public void GetActEffect(Skill s)
-    {
-
     }
 }

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Skeleton Ultimate
   m_EditorClassIdentifier: 
   _animator: {fileID: 22100000, guid: 4aa8e1fad671f9840851b4f6c952855b, type: 2}
+  hitEffect: {fileID: 143556661269741744, guid: 569343eef8b29e54383c0703e85731a6, type: 3}
+  actEffect: {fileID: 0}
   skillName: Heavy Swing
   cd: 6
   currentCd: 0
