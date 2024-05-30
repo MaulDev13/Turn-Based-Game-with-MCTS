@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b7aea79ef0a97f45ae4ffc6df33d35b, type: 3}
-  m_Name: Monster3
+  m_Name: Monster - Troll
   m_EditorClassIdentifier: 
   unitName: Troll
   animator: {fileID: 22100000, guid: 5688b986709a65746ad9e67f4dc79e6f, type: 2}
+  bloodPrefabs: {fileID: 4156442179713264713, guid: 33c123d95a679914d86cb33210c3bd82, type: 3}
   art: {fileID: 1717865445, guid: e6416ec4bd117aa47b1819aeb13c49e3, type: 3}
   avatar: {fileID: 1717865445, guid: e6416ec4bd117aa47b1819aeb13c49e3, type: 3}
   healthPoint: 2000
   maxHealtPoint: 10000
   shieldPoint: 0
   skillSet:
+  - {fileID: 11400000, guid: 977cc479583051a4a9a4adeb893fa5fa, type: 2}
   - {fileID: 11400000, guid: 6e130eef966525544bbcf4165a514f08, type: 2}
+  - {fileID: 11400000, guid: 38d5c8c648512cb438b9dc89eab05a3b, type: 2}

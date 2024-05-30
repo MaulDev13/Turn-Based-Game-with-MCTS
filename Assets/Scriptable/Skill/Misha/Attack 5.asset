@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Attack 5
   m_EditorClassIdentifier: 
   _animator: {fileID: 22100000, guid: abd0cf87169d712458ef7779fcfc309d, type: 2}
+  hitEffect: {fileID: 1882278192274195258, guid: 662c331a1cf575d4fa3fa4fd50ee390d, type: 3}
+  actEffect: {fileID: 0}
   skillName: Critical Attack
   cd: 5
   currentCd: 0

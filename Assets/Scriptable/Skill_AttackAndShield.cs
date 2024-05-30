@@ -11,6 +11,9 @@ public class Skill_AttackAndDefense : Skill
 
     public AttackType attackType;
 
+    [SerializeField] public GameObject shieldEffect;
+    [SerializeField] public GameObject attackEffect;
+
     public override void Use(BattleUnit user, BattleUnit enemy)
     {
         base.Use(user, enemy);
@@ -20,24 +23,33 @@ public class Skill_AttackAndDefense : Skill
             case SkillTarget.Self:
                 for (int i = 0; i < repeat; i++)
                 {
-                    enemy.AddShield(shield, this);
+                    hitEffect = attackEffect;
                     user.TakeDamage(damage, attackType, this);
+
+                    hitEffect = shieldEffect;
+                    enemy.AddShield(shield, this);
                 }
                 break;
             case SkillTarget.Enemy:
                 for (int i = 0; i < repeat; i++)
                 {
-                    user.AddShield(shield, this);
+                    hitEffect = attackEffect;
                     enemy.TakeDamage(damage, attackType, this);
+
+                    hitEffect = shieldEffect;
+                    user.AddShield(shield, this);
                 }
                 break;
             case SkillTarget.Both:
                 for (int i = 0; i < repeat; i++)
                 {
-                    user.AddShield(shield, this);
-                    enemy.AddShield(shield, this);
+                    hitEffect = attackEffect;
                     user.TakeDamage(damage, attackType, this);
                     enemy.TakeDamage(damage, attackType, this);
+
+                    hitEffect = shieldEffect;
+                    user.AddShield(shield, this);
+                    enemy.AddShield(shield, this);
                 }
                 break;
             default:

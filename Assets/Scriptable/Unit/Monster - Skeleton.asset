@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b7aea79ef0a97f45ae4ffc6df33d35b, type: 3}
-  m_Name: Monster2
+  m_Name: Monster - Skeleton
   m_EditorClassIdentifier: 
   unitName: Skeleton
   animator: {fileID: 22100000, guid: 4aa8e1fad671f9840851b4f6c952855b, type: 2}
+  bloodPrefabs: {fileID: 4156442179713264713, guid: 33c123d95a679914d86cb33210c3bd82, type: 3}
   art: {fileID: -1207150562, guid: aa38791fa39834345bdc91622717ca7e, type: 3}
   avatar: {fileID: -1207150562, guid: aa38791fa39834345bdc91622717ca7e, type: 3}
-  healthPoint: 1000
+  healthPoint: 2000
   maxHealtPoint: 10000
   shieldPoint: 0
   skillSet:

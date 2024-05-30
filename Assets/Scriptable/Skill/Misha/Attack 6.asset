@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Attack 6
   m_EditorClassIdentifier: 
   _animator: {fileID: 22100000, guid: d72feba20676bfc44b63b7cdb1f2f43a, type: 2}
+  hitEffect: {fileID: 0}
+  actEffect: {fileID: 0}
   skillName: Penetration Attack
   cd: 5
   currentCd: 0

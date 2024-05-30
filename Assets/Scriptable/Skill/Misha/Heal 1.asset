@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Heal 1
   m_EditorClassIdentifier: 
   _animator: {fileID: 22100000, guid: bd83ad0f014f56d45b1daeb958378cb7, type: 2}
+  hitEffect: {fileID: 2159143331510768955, guid: 32505aa763ed85741ba34074d45f4ba6, type: 3}
+  actEffect: {fileID: 0}
   skillName: Heal
   cd: 5
   currentCd: 0

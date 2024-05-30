@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Attack 2
   m_EditorClassIdentifier: 
   _animator: {fileID: 22100000, guid: ede2eeef73b2f794ebc2950c9b2844f9, type: 2}
+  hitEffect: {fileID: 1882278192274195258, guid: 662c331a1cf575d4fa3fa4fd50ee390d, type: 3}
+  actEffect: {fileID: 0}
   skillName: Power Attack
   cd: 5
   currentCd: 0

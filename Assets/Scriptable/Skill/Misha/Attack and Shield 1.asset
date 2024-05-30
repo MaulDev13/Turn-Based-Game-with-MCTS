@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Attack and Shield 1
   m_EditorClassIdentifier: 
   _animator: {fileID: 22100000, guid: 656f52d650813844b8d90aee6d2f4ae6, type: 2}
+  hitEffect: {fileID: 0}
+  actEffect: {fileID: 0}
   skillName: Attack and Shield
   cd: 5
   currentCd: 0
@@ -23,3 +25,5 @@ MonoBehaviour:
   shield: 200
   damage: 200
   attackType: 0
+  shieldEffect: {fileID: 0}
+  attackEffect: {fileID: 0}

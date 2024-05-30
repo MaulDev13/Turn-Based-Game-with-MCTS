@@ -10,17 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19099d458a3261c47a0221e8284f259f, type: 3}
-  m_Name: Troll Basic Attack
+  m_Name: Troll Attack 2
   m_EditorClassIdentifier: 
   _animator: {fileID: 22100000, guid: 5688b986709a65746ad9e67f4dc79e6f, type: 2}
-  hitEffect: {fileID: 0}
-  actEffect: {fileID: 2159143331510768955, guid: 32505aa763ed85741ba34074d45f4ba6, type: 3}
-  skillName: Basic Attack
-  cd: 0
+  hitEffect: {fileID: 4156442179713264713, guid: 33c123d95a679914d86cb33210c3bd82, type: 3}
+  actEffect: {fileID: 2094138046258168226, guid: f589382262a814f4fb2ddbce6c2e2c6a, type: 3}
+  skillName: Attack and Shield
+  cd: 4
   currentCd: 0
-  skillDesc: 
+  skillDesc: Deal damage to Enemy with value 200. Attack type is normal. Gain shield
+    with value 100 for 1 turn
   target: 1
   repeat: 1
   shield: 100
   damage: 200
   attackType: 0
+  shieldEffect: {fileID: 0}
+  attackEffect: {fileID: 0}

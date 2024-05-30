@@ -10,6 +10,7 @@ public class Unit : ScriptableObject
     [SerializeField] public string unitName;
 
     [SerializeField] public AnimatorOverrideController animator;
+    [SerializeField] public GameObject bloodPrefabs;
     [SerializeField] public Sprite art;
     [SerializeField] public Sprite avatar;
 
@@ -26,6 +27,7 @@ public class Unit : ScriptableObject
         unitName = _unit.unitName;
 
         animator = _unit.animator;
+        bloodPrefabs = _unit.bloodPrefabs;
         art = _unit.art;
         avatar = _unit.avatar;
 

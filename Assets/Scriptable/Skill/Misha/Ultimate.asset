@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Ultimate
   m_EditorClassIdentifier: 
   _animator: {fileID: 22100000, guid: 6df730d44b29d90498ef30a778316895, type: 2}
+  hitEffect: {fileID: 2234071191176533199, guid: 9173581a25e90f544a63286a1cd0356a, type: 3}
+  actEffect: {fileID: 0}
   skillName: ULTIMATE
   cd: 0
   currentCd: 0

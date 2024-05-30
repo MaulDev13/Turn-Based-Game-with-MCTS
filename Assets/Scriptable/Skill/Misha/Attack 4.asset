@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Attack 4
   m_EditorClassIdentifier: 
   _animator: {fileID: 22100000, guid: b7b5296c1fd0d1a4d87a7532a39da4d0, type: 2}
+  hitEffect: {fileID: 1901269988979920343, guid: e5e2c8194e40b0c42a13033873f66ad3, type: 3}
+  actEffect: {fileID: 0}
   skillName: Armor Break
   cd: 5
   currentCd: 0

@@ -49,9 +49,9 @@ MonoBehaviour:
   isPlayerFirstTurn: 1
   defaultPlayerUnit: {fileID: 11400000, guid: 75cc5d8a04d6a7e459eae70ba7d58bb5, type: 2}
   unitLevels:
+  - {fileID: 11400000, guid: 5ae5c75d1b9e08c4098f5c9241b12906, type: 2}
   - {fileID: 11400000, guid: d31ade9619c901249a36414d36f0e601, type: 2}
   - {fileID: 11400000, guid: a0be2671280953c4a981c1f1dc09089d, type: 2}
-  - {fileID: 11400000, guid: 5ae5c75d1b9e08c4098f5c9241b12906, type: 2}
   units:
   - {fileID: 11400000, guid: 75cc5d8a04d6a7e459eae70ba7d58bb5, type: 2}
   playerUnitBase: {fileID: 11400000, guid: 75cc5d8a04d6a7e459eae70ba7d58bb5, type: 2}

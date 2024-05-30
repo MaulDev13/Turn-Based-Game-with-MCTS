@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edc2587ef71b904890d2e5c5c3b2929, type: 3}
   m_Name: Golem_Heal
   m_EditorClassIdentifier: 
-  _animator: {fileID: 22100000, guid: 64b13baa9ab9cfe4dac1e89d478aa628, type: 2}
+  _animator: {fileID: 22100000, guid: fb1abf90cbed81c478f9b80c4fecd16f, type: 2}
+  hitEffect: {fileID: 2159143331510768955, guid: 32505aa763ed85741ba34074d45f4ba6, type: 3}
+  actEffect: {fileID: 0}
   skillName: Heal
-  cd: 9
+  cd: 6
   currentCd: 0
-  skillDesc: Heal Oneself with value 800
+  skillDesc: Heal Oneself with value 400
   target: 0
   repeat: 1
-  value: 800
+  value: 500

@@ -8,12 +8,6 @@ public class BattleUnitAnimation : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animControl;
 
-    [HideInInspector] public GameObject hitEffect;
-    [SerializeField] private GameObject defaultHitEffect;
-
-    [HideInInspector] public GameObject actEffect;
-    [SerializeField] private GameObject defaultActEffect;
-
     private void OnDisable()
     {
         //battleUnit.iAction -= AnimAct;
@@ -29,9 +23,6 @@ public class BattleUnitAnimation : MonoBehaviour
     {
         if (battleUnit.myUnit.animator != null)
             animControl.runtimeAnimatorController = battleUnit.myUnit.animator;
-
-        hitEffect = defaultHitEffect;
-        actEffect = defaultActEffect;
 
         //battleUnit.iAction += AnimAct;
         battleUnit.iAction2 += AnimAct;
@@ -60,11 +51,7 @@ public class BattleUnitAnimation : MonoBehaviour
         animControl.SetTrigger("Attack");
 
         if (_skill.actEffect != null)
-            actEffect = _skill.actEffect;
-        else
-            actEffect = defaultActEffect;
-
-        Instantiate(actEffect, transform.position, transform.rotation);
+            Instantiate(_skill.actEffect, transform.position, transform.rotation);
     }
 
     public void AnimTakeDamage(Skill _skill)
@@ -72,21 +59,16 @@ public class BattleUnitAnimation : MonoBehaviour
         animControl.SetTrigger("TakeDamage");
 
         if (_skill.hitEffect != null)
-            hitEffect = _skill.hitEffect;
-        else
-            hitEffect = defaultHitEffect;
-
-        Instantiate(hitEffect, transform.position, transform.rotation);
+            Instantiate(_skill.hitEffect, transform.position, transform.rotation);
+        
+        if(battleUnit.myUnit.bloodPrefabs != null)
+            Instantiate(battleUnit.myUnit.bloodPrefabs, transform.position, transform.rotation);
     }
 
     public void AnimTarget(Skill _skill)
     {
         if (_skill.hitEffect != null)
-            hitEffect = _skill.hitEffect;
-        else
-            hitEffect = defaultHitEffect;
-
-        Instantiate(hitEffect, transform.position, transform.rotation);
+            Instantiate(_skill.hitEffect, transform.position, transform.rotation);
     }
 
     public void AnimDead()

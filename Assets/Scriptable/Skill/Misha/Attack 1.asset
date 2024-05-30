@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Attack 1
   m_EditorClassIdentifier: 
   _animator: {fileID: 22100000, guid: aef5af4ac9208ed49ad9fda6fd0de743, type: 2}
+  hitEffect: {fileID: 0}
+  actEffect: {fileID: 0}
   skillName: Basic Attack
   cd: 0
   currentCd: 0
