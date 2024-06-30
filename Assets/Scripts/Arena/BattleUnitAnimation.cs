@@ -1,5 +1,5 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations;
 
 public class BattleUnitAnimation : MonoBehaviour
 {
@@ -7,6 +7,8 @@ public class BattleUnitAnimation : MonoBehaviour
 
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animControl;
+
+    private Skill currentSkill;
 
     private void OnDisable()
     {
@@ -17,6 +19,8 @@ public class BattleUnitAnimation : MonoBehaviour
 
         battleUnit.iShield2 -= AnimTarget;
         battleUnit.iHeal2 -= AnimTarget;
+
+        LocalManager_ArenaUI.instance.iAnimSpeedUpdate -= AnimSpeed;
     }
 
     public void Init(Sprite art)
@@ -32,6 +36,8 @@ public class BattleUnitAnimation : MonoBehaviour
         battleUnit.iShield2 += AnimTarget;
         battleUnit.iHeal2 += AnimTarget;
 
+        LocalManager_ArenaUI.instance.iAnimSpeedUpdate += AnimSpeed;
+
         spriteRenderer.sprite = art;
 
         if(!battleUnit.isPlayerUnit)
@@ -45,34 +51,72 @@ public class BattleUnitAnimation : MonoBehaviour
 
     public void AnimAct(Skill _skill)
     {
-        if(_skill._animator != null)
-            animControl.runtimeAnimatorController = _skill._animator;
+        currentSkill = _skill;
+
+        if (currentSkill._animator != null)
+            animControl.runtimeAnimatorController = currentSkill._animator;
 
         animControl.SetTrigger("Attack");
 
-        if (_skill.actEffect != null)
-            Instantiate(_skill.actEffect, transform.position, transform.rotation);
+        //ActEffect()
+        ActEffect();
+    }
+
+    public void ActEffect()
+    {
+        if (currentSkill == null)
+            return;
+
+        if (currentSkill.actEffect != null)
+            Instantiate(currentSkill.actEffect, transform.position, transform.rotation);
+    }
+
+    public void HitEffect()
+    {
+        if (currentSkill == null)
+            return;
+
+        if (currentSkill.hitEffect != null)
+            Instantiate(currentSkill.hitEffect, transform.position, transform.rotation);
+    }
+
+    public void TakeDamageEffect()
+    {
+        if (battleUnit.myUnit.bloodPrefabs != null)
+            Instantiate(battleUnit.myUnit.bloodPrefabs, transform.position, transform.rotation);
     }
 
     public void AnimTakeDamage(Skill _skill)
     {
+        currentSkill = _skill;
+
         animControl.SetTrigger("TakeDamage");
 
-        if (_skill.hitEffect != null)
-            Instantiate(_skill.hitEffect, transform.position, transform.rotation);
-        
-        if(battleUnit.myUnit.bloodPrefabs != null)
-            Instantiate(battleUnit.myUnit.bloodPrefabs, transform.position, transform.rotation);
+        //HitEffect()
+        HitEffect();
+
+        //TakeDamageEffect()
+        TakeDamageEffect();
     }
 
     public void AnimTarget(Skill _skill)
     {
-        if (_skill.hitEffect != null)
+        currentSkill = _skill;
+
+        //??
+        if (currentSkill.hitEffect != null)
             Instantiate(_skill.hitEffect, transform.position, transform.rotation);
     }
 
     public void AnimDead()
     {
         animControl.SetTrigger("Dead");
+    }
+
+    public void AnimSpeed()
+    {
+        animControl.speed = LocalManager_Arena.instance.animationSpeed;
+
+        Debug.Log($"Animation speed = {animControl.speed}");
     }
 }

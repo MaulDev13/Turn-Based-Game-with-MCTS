@@ -20,6 +20,9 @@ public class LocalManager_ArenaUI : MonoBehaviour
     }
     #endregion
 
+    public delegate void UnitEvent();
+    public UnitEvent iAnimSpeedUpdate;
+
     [SerializeField] protected GameObject actionBtnPrefabs;
     [SerializeField] private GameObject unitInfoPanelPrefabs;
     [SerializeField] protected GameObject lastMovePrefabs;
@@ -37,6 +40,12 @@ public class LocalManager_ArenaUI : MonoBehaviour
     [SerializeField] protected TextMeshProUGUI turnInfoTxt;
 
     protected List<ArenaActionBtn> btnActionList = new List<ArenaActionBtn>();
+
+    public float superSlowAnimationSpeed = 0.25f;
+    public float slowAnimationSpeed = 0.5f;
+    public float normalAnimationSpeed = 1f;
+    public float fastAnimationSpeed = 2f;
+    public float superFastAnimationSpeed = 4f;
 
     private void Start()
     {
@@ -164,5 +173,34 @@ public class LocalManager_ArenaUI : MonoBehaviour
         var newStepAi = Instantiate(aiStepPrefabs, aiStepParent) as GameObject;
         var newText = newStepAi.GetComponent<TextMeshProUGUI>();
         newText.text = _value;
+    }
+
+    public virtual void AnimSpeedButton(int speed)
+    {
+        switch(speed)
+        {
+            case -2:
+                LocalManager_Arena.instance.animationSpeed = superSlowAnimationSpeed;
+                break;
+            case -1:
+                LocalManager_Arena.instance.animationSpeed = slowAnimationSpeed;
+                break;
+            case 1:
+                LocalManager_Arena.instance.animationSpeed = normalAnimationSpeed;
+                break;
+            case 2:
+                LocalManager_Arena.instance.animationSpeed = fastAnimationSpeed;
+                break;
+            case 4:
+                LocalManager_Arena.instance.animationSpeed = superFastAnimationSpeed;
+                break;
+            default:
+                Debug.LogError($"Animation speed not is not set as default");
+                break;
+        }
+
+        Debug.Log($"Current animation speed is {LocalManager_Arena.instance.animationSpeed}");
+
+        iAnimSpeedUpdate?.Invoke();
     }
 }

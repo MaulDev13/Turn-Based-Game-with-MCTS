@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4937802613304339763}
   - component: {fileID: 705074931496379911}
   - component: {fileID: 2207193636398761523}
+  - component: {fileID: 1687983043413906108}
   m_Layer: 0
   m_Name: Art
   m_TagString: Untagged
@@ -106,6 +107,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1687983043413906108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010740216985281359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ecff585e09200540bcdc8114b432459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7190229275657032543
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +186,3 @@ MonoBehaviour:
   battleUnit: {fileID: 1490846940488146162}
   spriteRenderer: {fileID: 705074931496379911}
   animControl: {fileID: 2207193636398761523}
-  hitEffect: {fileID: 0}
-  defaultHitEffect: {fileID: 4156442179713264713, guid: 33c123d95a679914d86cb33210c3bd82, type: 3}
-  actEffect: {fileID: 0}
-  defaultActEffect: {fileID: 4192837464934224993, guid: e73b58dd9ba132a49abca7ee7c0abdf6, type: 3}

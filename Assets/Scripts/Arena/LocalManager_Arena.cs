@@ -26,6 +26,8 @@ public class LocalManager_Arena : MonoBehaviour
     public GameObject unitPrefabs;
 
     public float enemyDelayAct = 0.5f;
+    public float animationSpeed = 1f;
+    
 
     public bool isHideActBtnEnemy = true;
     [HideInInspector] public bool isEnd = false;
@@ -134,6 +136,8 @@ public class LocalManager_Arena : MonoBehaviour
         enemyUnit.myEnemy = playerUnit;
 
         LocalManager_ArenaUI.instance.SetUnitInfoPanel();
+
+        LocalManager_ArenaUI.instance.AnimSpeedButton(1);
 
         if (ArenaGameManager.instance.isPlayerFirstTurn)
             BattleStateManager(BattleState.PlayerTurn);
